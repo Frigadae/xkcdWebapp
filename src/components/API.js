@@ -1,14 +1,30 @@
+
 import axios from "axios";
 
-let latestComic;
-let latestNum;
-
-const comicPromise = Promise.all()
-
-latestComic = await axios.get("https://xkcd.com/info.0.json")
-.then(response => {
+/* Get latest comic json data*/
+async function getLatestComicData() {
+    const latestComic = await axios.get("https://xkcd.com/info.0.json")
+    .then(response => {
     return response.data;
-})
-.catch(error => {console.log(error)});
+    })
+    .catch(error => {console.log(error)});
+    return latestComic;
+}
 
-console.log(latestComic);
+/* Get random comic json data */
+async function getRandomComicData(num) {
+    const randomComic = await axios.get(`https://xkcd.com/${num}/info.0.json`)
+    .then(response => {
+    return response.data;
+    })
+    .catch(error => {console.log(error)});
+    return randomComic;
+}
+
+/* Print code to validate if json is received */
+/*
+console.log(await getLatestComicData());
+console.log(await getRandomComicData(500));
+*/
+
+export {getLatestComicData, getRandomComicData};
