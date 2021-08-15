@@ -6,7 +6,7 @@ import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
-    <div id="App">
+    <div id="app">
       <Header/>
       <Body/>
       <Footer/>
@@ -15,3 +15,5 @@ function App() {
 }
 
 export default App;
+
+
