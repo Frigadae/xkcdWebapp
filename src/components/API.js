@@ -1,18 +1,21 @@
 import axios from "axios";
 
-/* Get latest comic json data*/
+/*
+
+// Get latest comic json data
 async function getLatestComicData() {
-    const latestComic = await axios.get("https://xkcd.com/info.0.json")
+    const latestComic = await axios.get("info.0.json")
     .then(response => {
-    return response.data;
+        console.log(response.data);
+        return response.data;
     })
     .catch(error => {console.log(error)});
     return latestComic;
 }
 
-/* Get random comic json data */
-async function getRandomComicData(num) {
-    const randomComic = await axios.get(`https://xkcd.com/${num}/info.0.json`)
+//Get random comic json data
+async function getRandomComicData(num = 1) {
+    const randomComic = await axios.get(`${num}/info.0.json`)
     .then(response => {
     return response.data;
     })
@@ -20,10 +23,22 @@ async function getRandomComicData(num) {
     return randomComic;
 }
 
-/* Print code to validate if json is received */
-/*
-console.log(await getLatestComicData());
-console.log(await getRandomComicData(500));
+//Print code to validate if json is received
+
+//console.log(await getLatestComicData());
+//console.log(await getRandomComicData(500));
+
+//export {getLatestComicData, getRandomComicData};
 */
 
-export {getLatestComicData, getRandomComicData};
+
+const getAPI = axios.create({
+    baseURL: "https://thatcopy.pw/catapi/rest/",
+    headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization:"",
+    }  
+})
+
+export {getAPI};
