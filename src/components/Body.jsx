@@ -1,6 +1,6 @@
 import React from "react";
 //import { getLatestComicData, getRandomComicData } from "./API";
-import { getAPI, getComic } from "./API";
+import { getAPI } from "./API";
 
 class Body extends React.Component {
     constructor(props) {
@@ -9,14 +9,15 @@ class Body extends React.Component {
     }
     
     async componentDidMount() {
-        const catImg = await getAPI.get()
+        const image = await getAPI.get()
         .then(response => {
+            console.log(response.data);
             return response.data;
         })
         .catch(error => {
             console.log(error);
         })
-        this.setState({ getImg: catImg });
+        this.setState({ getImg: image });
     }
     
     componentWillUnmount() {
@@ -28,14 +29,14 @@ class Body extends React.Component {
             return (
                 <div>
                     <h1>Body</h1>
-                    <h3>Loading a cat image...</h3>
+                    <h3>Loading an image...</h3>
                 </div>
             )
         } else {
             return (
                 <div>
                     <h1>Body</h1>
-                    <img src={this.state.getImg.url} alt="A cat"></img>
+                    <img src={this.state.getImg.image} alt="Image from Kab"></img>
                 </div>
             )
         }
