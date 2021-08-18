@@ -36,7 +36,7 @@ class Body extends React.Component {
             return (
                 <div>
                     <h1>Body</h1>
-                    <img src={this.state.getImg.image} alt="Image from Kab"></img>
+                    <img src={this.state.getImg.img} alt="A XKCD comic"></img>
                 </div>
             )
         }

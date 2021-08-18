@@ -33,7 +33,7 @@ async function getRandomComicData(num = 1) {
 
 
 const getAPI = axios.create({
-    baseURL: "https://api.twotu.xyz/v3/cat/",
+    baseURL: "http://localhost:5000/getData",
     headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
