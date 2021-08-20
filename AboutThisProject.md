@@ -2,7 +2,7 @@
 
 ## Background
 I built this project after attending a Summer Of Tech event which showcases how Vue.js web apps can be used to communicate with APIs via the internet.\
-(Hello Wildeye! Thank you for Javascript and the IoT lecture!)\
+(Hello Wildeye! Thank you for Javascript and the IoT lecture!)
 
 Before this, I was aware of the existence of React.js but never really understood it or bothered to give it a try.
 I now have a basic understanding of React.js. The Javascript code takes the HTML code and "renders" it onto the browser page.
