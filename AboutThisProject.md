@@ -25,7 +25,5 @@ See: https://dev.to/will_yama/how-to-overcome-cors-errors-2nh9
 
 
 XKCD is by Randall Monroe.
-
 Please visit [xkcd.com](https://xkcd.com) to directly access the source materials.
-
 The XKCD api can be found [here](https://xkcd.com/json.html)
