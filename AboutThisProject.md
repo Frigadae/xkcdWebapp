@@ -1,13 +1,16 @@
 # About this Project
 
-## Introduction
-I built this project after attending a Summer Of Tech event which showcases how Vue.js web apps can be used to communicate with APIs via the internet.
-(Hello Wildeye! Thank you for Javascript and the IoT lecture!)
+## Background
+I built this project after attending a Summer Of Tech event which showcases how Vue.js web apps can be used to communicate with APIs via the internet.\
+(Hello Wildeye! Thank you for Javascript and the IoT lecture!)\
 
 Before this, I was aware of the existence of React.js but never really understood it or bothered to give it a try.
 I now have a basic understanding of React.js. The Javascript code takes the HTML code and "renders" it onto the browser page.
-This project is not perfect, there are many improvements that can be made. But it is a good start.
+This project is not perfect, but it is a good start.
 
+I had always enjoyed browsing XKCD comics. It's filled with science jokes and presented in a simple visual format.
+Although the XKCD website keeps an archive with the titles displayed. It would be nice to search for a comic instead of browsing the archive.
+While numbers are harder to remember than titles, it does make the searching easier.
 
 ## How to start this web app
 This React app requires a backend server to access the API. Without it the CORS policy in the browser blocks the fetch requests.
@@ -20,11 +23,10 @@ This React app requires a backend server to access the API. Without it the CORS 
 
 ## Acknowledgements
 I would like to thank William Samaya from dev.to for showing how to overcome the CORS policy problem.
-Without his guide I would not be able to utilise the XKCD API for this project.
-
+Without his guide I would not be able to utilise the XKCD API for this project.\
 See: https://dev.to/will_yama/how-to-overcome-cors-errors-2nh9 
 
 
-XKCD is by Randall Monroe.
-Please visit [xkcd.com](https://xkcd.com) to directly access the source materials.
+XKCD is by Randall Monroe.\
+Please visit [xkcd.com](https://xkcd.com) to directly access the source materials.\
 The XKCD api can be found [here](https://xkcd.com/json.html)
