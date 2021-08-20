@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header.jsx";
-import Body from "./components/Body.jsx";
+import Main from "./components/Main.jsx";
 import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
     <div id="app">
       <Header/>
-      <Body/>
+      <Main/>
       <Footer/>
     </div>
   );
