@@ -12,9 +12,10 @@ This project is not perfect, there are many improvements that can be made. But i
 ## How to start this web app
 This React app requires a backend server to access the API. Without it the CORS policy in the browser blocks the fetch requests.
 
-1. Go to ``src/backend`` and run ``server.js`` using cmd/powershell or terminal. It should run on Localhost:5000
-2. Go back to the root folder and run ``npm start`` using cmd/powershell or terminal.
-3. The React app should now be able to make fetch requests. You can now search XKCD comics by number.
+1. Before starting, run ``npm install`` in the root folder and in ``src/backend`` folder to install dependencies.
+2. Go to ``src/backend`` and run ``server.js`` using a powershell or terminal window. It should run on Localhost:5000.
+3. Go back to the root folder and run ``npm start`` using a new powershell or terminal window.
+4. The React app should now be able to make fetch requests. You can now search XKCD comics by number.
 
 
 ## Acknowledgements
