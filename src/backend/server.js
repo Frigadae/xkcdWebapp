@@ -21,13 +21,25 @@ app.get('/getData', cors(corsOptions), async (req, res) => {
     }
     const comicNum = req.query.num;
 
-    if (comicNum == null) {
-        const response = await fetch(endpointStart + endpointEnd, fetchOptions);
-        const jsonResponse = await response.json();
+    if (comicNum == null || comicNum == "" || comicNum == 0) {
+        const response = await fetch(endpointStart + endpointEnd, fetchOptions).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Something went wrong');
+            }
+        });
+        const jsonResponse = await response;
         res.json(jsonResponse);
     } else {
-        const response = await fetch(endpointStart + comicNum + "/" +endpointEnd, fetchOptions);
-        const jsonResponse = await response.json();
+        const response = await fetch(endpointStart + comicNum + "/" +endpointEnd, fetchOptions).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Something went wrong');
+            }
+        });
+        const jsonResponse = await response;
         res.json(jsonResponse);
     }
 });
