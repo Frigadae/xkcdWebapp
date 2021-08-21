@@ -72,7 +72,7 @@ class Main extends React.Component {
                                 <input type="text" placeholder="Enter a number" value={this.state.searchNum} onChange={this.onChange}></input>
                                 <button type="submit" onClick={this.getNewComic}>Submit</button>
                             </label>
-                            <p>Hint: You can enter nothing or 0 to fetch the latest comic.</p>
+                            <p>Tip: You can enter nothing or 0 to fetch the latest comic.</p>
                         </form>
                     </div>
                     <div id="imageDiv">
