@@ -57,8 +57,9 @@ class Main extends React.Component {
     render() {
         if (this.state.getImg == null) {
             return (
-                <div>
-                    <h1>Getting the latest comic...</h1>
+                <div id="content">
+                    <h2>Getting the latest comic...</h2>
+                    <h4>Please wait</h4>
                 </div>
             )
         } else {
