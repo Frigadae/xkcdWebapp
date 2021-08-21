@@ -20,6 +20,8 @@ This React app requires a backend server to access the API. Without it the CORS 
 3. Go back to the root folder and run ``npm start`` using a new powershell or terminal window.
 4. The React app should now be able to make fetch requests. You can now search XKCD comics by number.
 
+## Project demo
+You can find a demonstration of the webapp in action [here](https://www.youtube.com/watch?v=v_YiEfR_okA)
 
 ## Acknowledgements
 I would like to thank William Samaya from dev.to for showing how to overcome the CORS policy problem.
