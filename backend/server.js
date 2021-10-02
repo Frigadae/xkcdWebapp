@@ -52,5 +52,5 @@ app.get("", cors(corsOptions), async (req, res) => {
 });
 
 app.listen(portNum, () => {
-    console.log(`Example app listening at http://localhost:${portNum}`);
+    console.log(`Server script listening at http://localhost:${portNum}`);
 });

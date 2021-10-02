@@ -16,7 +16,7 @@ While numbers are harder to remember than titles, it does make the searching eas
 This React app requires a backend server to access the API. Without it the CORS policy in the browser blocks the fetch requests.
 
 1. Before starting, run ``npm install`` in the root folder and in ``backend`` folder to install dependencies.
-2. In the ``backend`` folder and run ``server.js`` using a powershell or terminal window. It should run on Localhost:5000.
+2. In the ``backend`` folder run command ``node server.js`` using a powershell or terminal window. It should run on ``http://localhost:5000/``.
 3. Open a new powershell or terminal window in the root folder and run ``npm start`` to start the webapp.
 4. The React app should now be able to make fetch requests. You can now search XKCD comics by number.
 
