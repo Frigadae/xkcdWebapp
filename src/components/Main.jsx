@@ -38,16 +38,29 @@ class Main extends React.Component {
         }
         
         console.log(`Number entered: ${this.state.searchNum}`);
-        const image = await getAPI.get(`?url=https://xkcd.com/${this.state.searchNum}/info.0.json`)
-        .then(response => {
+        if (this.state.searchNum === 0 || this.state.searchNum === null) {
+            const image = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
+            .then(response => {
             console.log(response.data);
             return response.data;
-        })
-        .catch(error => {
-            console.log(error);
-        })
-        console.log(image.num);
-        this.setState({ getImg: image});
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            console.log(image.num);
+            this.setState({ getImg: image});
+        } else {
+            const image = await getAPI.get(`?url=https://xkcd.com/${this.state.searchNum}/info.0.json`)
+            .then(response => {
+                console.log(response.data);
+                return response.data;
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            console.log(image.num);
+            this.setState({ getImg: image});
+        }
     }
 
     onChange(element) {
@@ -55,7 +68,7 @@ class Main extends React.Component {
     }
 
     render() {
-        if (this.state.getImg == null) {
+        if (this.state.getImg === null) {
             return (
                 <div id="content">
                     <h2>Getting the latest comic...</h2>
