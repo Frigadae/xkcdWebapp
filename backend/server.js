@@ -38,8 +38,7 @@ app.get('/getData', cors(corsOptions), async (req, res) => {
                 throw new Error('Something went wrong fetching JSON');
             }
         });
-        const jsonResponse = await response;
-        res.json(jsonResponse);
+        res.json(response);
     }
 });
 
