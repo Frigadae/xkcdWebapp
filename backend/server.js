@@ -7,8 +7,8 @@ const url = require("url")
 const portNum = 5000;
 const app = express();
 
-const endpointStart = "https://xkcd.com/";
-const endpointEnd = "info.0.json";
+//const endpointStart = "https://xkcd.com/";
+//const endpointEnd = "info.0.json";
 
 app.use(cors());
 const corsOptions = {
@@ -19,24 +19,23 @@ app.get('/getData', cors(corsOptions), async (req, res) => {
     const fetchOptions = {
         method: 'GET'
     }
-    const comicNum = req.query.num;
+    const suppliedUrl = req.query.url;
 
-    if (comicNum == null || comicNum == "" || comicNum == 0) {
-        const response = await fetch(endpointStart + endpointEnd, fetchOptions).then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Something went wrong');
-            }
-        });
-        const jsonResponse = await response;
+    if (suppliedUrl == null || suppliedUrl == "") {
+        const jsonResponse = {
+            "name":"getData",
+            "about":"getData sends a fetch request to the url given and receives a JSON back.",
+            "param":"A url link",
+            "return":"A JSON object",
+            "notes":"You are receiving this JSON because no url is given in the query. Please give a url link."
+        };
         res.json(jsonResponse);
     } else {
-        const response = await fetch(endpointStart + comicNum + "/" +endpointEnd, fetchOptions).then(response => {
+        const response = await fetch(suppliedUrl).then(response => {
             if (response.ok) {
                 return response.json();
             } else {
-                throw new Error('Something went wrong');
+                throw new Error('Something went wrong fetching JSON');
             }
         });
         const jsonResponse = await response;

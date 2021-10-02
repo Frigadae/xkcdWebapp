@@ -11,7 +11,7 @@ class Main extends React.Component {
     }
     
     async componentDidMount() {
-        const image = await getAPI.get()
+        const image = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
         .then(response => {
             console.log(response.data);
             return response.data;
@@ -38,7 +38,7 @@ class Main extends React.Component {
         }
         
         console.log(`Number entered: ${this.state.searchNum}`);
-        const image = await getAPI.get(`?num=${this.state.searchNum}`)
+        const image = await getAPI.get(`?url=https://xkcd.com/${this.state.searchNum}/info.0.json`)
         .then(response => {
             console.log(response.data);
             return response.data;
