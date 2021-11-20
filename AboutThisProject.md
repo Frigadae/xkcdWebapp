@@ -12,16 +12,14 @@ I had always enjoyed browsing XKCD comics. It's filled with science jokes and pr
 Although the XKCD website keeps an archive with the titles displayed. It would be nice to search for a comic instead of browsing the archive.
 While numbers are harder to remember than titles, it does make the searching easier.
 
-## How to start this web app
-This React app requires a backend server to access the API. Without it the CORS policy in the browser blocks the fetch requests.
-
-1. Before starting, run ``npm install`` in the root folder and in ``backend`` folder to install dependencies.
-2. In the ``backend`` folder run command ``node server.js`` using a powershell or terminal window. It should run on ``http://localhost:5000/``.
-3. Open a new powershell or terminal window in the root folder and run ``npm start`` to start the webapp.
-4. The React app should now be able to make fetch requests. You can now search XKCD comics by number.
+## Website link
+You can access the web application and search up XKCD comics [here](xkcdsearchwebapp.netlify.app/).
 
 ## Project demo
-You can find a demonstration of the webapp in action [here](https://www.youtube.com/watch?v=v_YiEfR_okA)
+You can find a demonstration of the webapp in action [here](https://www.youtube.com/watch?v=v_YiEfR_okA).
+
+## Other remarks
+The frontend of the webapp is hosted on Netlify. The backend code is written in C# and hosted on Microsoft Azure as serverless functions. 
 
 ## Acknowledgements
 I would like to thank William Samaya from dev.to for showing how to overcome the CORS policy problem.
