@@ -26,7 +26,17 @@ body {
   margin-top: 5px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
+  #content {
+    width: 85%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
   #content {
     width: 100%;
     padding-top: 10px;
