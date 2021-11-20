@@ -39,7 +39,7 @@ class Main extends React.Component {
         
         console.log(`Number entered: ${this.state.searchNum}`);
         if (this.state.searchNum === 0 || this.state.searchNum === null) {
-            const image = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
+            const jsonString = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
             .then(response => {
             console.log(response.data);
             return response.data;
@@ -47,10 +47,11 @@ class Main extends React.Component {
             .catch(error => {
                 console.log(error);
             })
+            const image = JSON.parse(jsonString);
             console.log(image.num);
             this.setState({ getImg: image});
         } else {
-            const image = await getAPI.get(`?url=https://xkcd.com/${this.state.searchNum}/info.0.json`)
+            const jsonString = await getAPI.get(`?url=https://xkcd.com/${this.state.searchNum}/info.0.json`)
             .then(response => {
                 console.log(response.data);
                 return response.data;
@@ -58,6 +59,7 @@ class Main extends React.Component {
             .catch(error => {
                 console.log(error);
             })
+            const image = JSON.parse(jsonString);
             console.log(image.num);
             this.setState({ getImg: image});
         }
