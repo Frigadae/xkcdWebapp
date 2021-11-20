@@ -13,7 +13,7 @@ Although the XKCD website keeps an archive with the titles displayed. It would b
 While numbers are harder to remember than titles, it does make the searching easier.
 
 ## Website link
-You can access the web application and search up XKCD comics [here](xkcdsearchwebapp.netlify.app/).
+You can access the web application and search up XKCD comics [here](https://xkcdsearchwebapp.netlify.app/).
 
 ## Project demo
 You can find a demonstration of the webapp in action [here](https://www.youtube.com/watch?v=v_YiEfR_okA).
