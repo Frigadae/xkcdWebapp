@@ -11,7 +11,7 @@ class Main extends React.Component {
     }
     
     async componentDidMount() {
-        const image = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
+        const jsonString = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
         .then(response => {
             console.log(response.data);
             return response.data;
@@ -19,6 +19,7 @@ class Main extends React.Component {
         .catch(error => {
             console.log(error);
         })
+        const image = JSON.parse(jsonString);
         console.log(image.num);
         this.setState({ getImg: image, maxNum: image.num });
     }
