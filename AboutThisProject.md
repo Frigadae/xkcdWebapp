@@ -18,8 +18,10 @@ You can access the web application and search up XKCD comics [here](https://xkcd
 ## Project demo
 You can find a demonstration of the webapp in action [here](https://www.youtube.com/watch?v=v_YiEfR_okA).
 
-## Other remarks
-The frontend of the webapp is hosted on Netlify. The backend code is written in C# and hosted on Microsoft Azure as serverless functions. 
+## Technologies used
+- Front end is built using Javascript and React.js and hosted on Netlify.
+- Code is maintained using Git on both the Github repository and the local repository.
+- Backend is built using C# and .Net and is hosted on Microsoft Azure's functions service.
 
 ## Acknowledgements
 I would like to thank William Samaya from dev.to for showing how to overcome the CORS policy problem.
