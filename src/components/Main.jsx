@@ -34,6 +34,7 @@ function Main() {
             })
             .catch(error => {
                 console.log(error);
+                setFlag(false);
             })
         } else if (Number.parseInt(input) === 0) {
             getAPI.get(`?url=https://xkcd.com/info.0.json`)
@@ -45,6 +46,7 @@ function Main() {
             })
             .catch(error => {
                 console.log(error);
+                setFlag(false);
             })
         } else {
             setFlag(false);
