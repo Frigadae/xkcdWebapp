@@ -12,6 +12,13 @@ I had always enjoyed browsing XKCD comics. It's filled with science jokes and pr
 Although the XKCD website keeps an archive with the titles displayed. It would be nice to search for a comic instead of browsing the archive.
 While numbers are harder to remember than titles, it does make the searching easier.
 
+## 2021 Update
+When I first built this ReactJs app in 2020. I had no idea what exactly each component does, as long as it worked I felt satisfied. 
+This time I understood the inner workings of React far more and proceeded to rewrite my code. 
+Originally the Main component was class-based. While this is perfectly fine. I see the benefits of functional components outweigh class-based components. 
+The biggest appeal is it is simpler to set up and removes the need for a constructor or binding functions (without resorting to arrow functions).
+The rewrite took place on June 1 2021 and was deployed to Netlify.
+
 ## Website link
 You can access the web application and search up XKCD comics [here](https://xkcdsearchwebapp.netlify.app/).
 
