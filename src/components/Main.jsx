@@ -13,14 +13,12 @@ class Main extends React.Component {
     async componentDidMount() {
         const jsonString = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
         .then(response => {
-            console.log(response.data);
             return response.data;
         })
         .catch(error => {
             console.log(error);
         })
         const image = JSON.parse(jsonString);
-        console.log(image.num);
         this.setState({ getImg: image, maxNum: image.num });
     }
 
@@ -38,30 +36,25 @@ class Main extends React.Component {
             return;
         }
         
-        console.log(`Number entered: ${this.state.searchNum}`);
         if (this.state.searchNum == 0 || this.state.searchNum === null) {
             const jsonString = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
             .then(response => {
-            console.log(response.data);
-            return response.data;
-            })
-            .catch(error => {
-                console.log(error);
-            })
-            const image = JSON.parse(jsonString);
-            console.log(image.num);
-            this.setState({ getImg: image});
-        } else {
-            const jsonString = await getAPI.get(`?url=https://xkcd.com/${this.state.searchNum}/info.0.json`)
-            .then(response => {
-                console.log(response.data);
                 return response.data;
             })
             .catch(error => {
                 console.log(error);
             })
             const image = JSON.parse(jsonString);
-            console.log(image.num);
+            this.setState({ getImg: image});
+        } else {
+            const jsonString = await getAPI.get(`?url=https://xkcd.com/${this.state.searchNum}/info.0.json`)
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            const image = JSON.parse(jsonString);
             this.setState({ getImg: image});
         }
     }
