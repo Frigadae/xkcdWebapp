@@ -7,7 +7,7 @@ function App() {
   return (
     <div id="app">
       <Header/>
-      <Main/>
+      <MainNew/>
       <Footer/>
     </div>
   );

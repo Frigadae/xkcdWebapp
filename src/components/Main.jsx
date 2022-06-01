@@ -1,99 +1,100 @@
-import React from "react";
-//import { getLatestComicData, getRandomComicData } from "./API";
+import React, {useState, useEffect} from "react";
 import { getAPI } from "./API";
 
-class Main extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {getImg: null, maxNum: 0, searchNum: ""};
-        this.getNewComic = this.getNewComic.bind(this);
-        this.onChange = this.onChange.bind(this);
-    }
-    
-    async componentDidMount() {
-        const jsonString = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
+function Main() {
+    const [comicData, setComicData] = useState({num: 0, title: "", getImg: null, alt: "", day:0, month:0, year:0});
+    const [maxNum, setMaxNum] = useState(-1);
+    const [input, setInput] = useState("");
+    const [flag, setFlag] = useState(true);
+
+    //makes a HTTP request when component mounts for the first time
+    useEffect(() => {
+        getAPI.get(`?url=https://xkcd.com/info.0.json`)
         .then(response => {
-            return response.data;
+            const receivedComicData = JSON.parse(response.data);
+            setMaxNum(receivedComicData.num);
+            setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
+            day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
         })
         .catch(error => {
             console.log(error);
         })
-        const image = JSON.parse(jsonString);
-        this.setState({ getImg: image, maxNum: image.num });
-    }
+    }, []);
 
-    async getNewComic(element) {
-        element.preventDefault();
-        if (isNaN(this.state.searchNum)) {
-            console.warn("Request aborted! Please enter an integer!");
-            alert("Request aborted! Please enter an integer!");
-            return;
-        }
-
-        if (this.state.searchNum > this.state.maxNum) {
-            console.warn("Request aborted! Number entered exceeds max number!");
-            alert("Request aborted! Number entered exceeds max number!");
-            return;
-        }
-        
-        if (this.state.searchNum === 0 || this.state.searchNum === null) {
-            const jsonString = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
+    //makes a HTTP request when submit button is clicked
+    function handleSubmit(event) {
+        event.preventDefault();
+        if (input > 0 && input <= maxNum) {
+            getAPI.get(`?url=https://xkcd.com/${input}/info.0.json`)
             .then(response => {
-                return response.data;
+                setFlag(true);
+                const receivedComicData = JSON.parse(response.data);
+                setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
+                day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
             })
             .catch(error => {
                 console.log(error);
             })
-            const image = JSON.parse(jsonString);
-            this.setState({ getImg: image});
-        } else {
-            const jsonString = await getAPI.get(`?url=https://xkcd.com/${this.state.searchNum}/info.0.json`)
+        } else if (Number.parseInt(input) === 0) {
+            getAPI.get(`?url=https://xkcd.com/info.0.json`)
             .then(response => {
-                return response.data;
+                setFlag(true);
+                const receivedComicData = JSON.parse(response.data);
+                setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
+                day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
             })
             .catch(error => {
                 console.log(error);
             })
-            const image = JSON.parse(jsonString);
-            this.setState({ getImg: image});
-        }
-    }
-
-    onChange(element) {
-        this.setState({searchNum: element.target.value});
-    }
-
-    render() {
-        if (this.state.getImg === null) {
-            return (
-                <div id="content">
-                    <h2>Getting the latest comic...</h2>
-                    <h4>Please wait</h4>
-                </div>
-            )
         } else {
-            return (
-                <div id="content">
-                    <div id="searchDiv">
-                        <p>The latest comic published has the number: {this.state.maxNum}</p>
-                        <form onSubmit={this.getNewComic}>
-                            <label>
-                                Please enter a number : 
-                                <input type="text" placeholder="Enter a number" value={this.state.searchNum} onChange={this.onChange}></input>
-                                <button type="submit" onClick={this.getNewComic}>Submit</button>
-                            </label>
-                            <p>Tip: You can enter nothing or 0 to fetch the latest comic.</p>
-                        </form>
-                    </div>
-                    <div id="imageDiv">
-                        <h3 id="contentHeader">{this.state.getImg.num}: {this.state.getImg.title}</h3>
-                        <img id="contentImg" src={this.state.getImg.img} alt={this.state.getImg.alt}></img>
-                        <p>Comic published on: {this.state.getImg.day}/{this.state.getImg.month}/{this.state.getImg.year}</p>
-                    </div>
-                </div>
-            )
+            setFlag(false);
         }
     }
+
+    //returns the components
+    return (
+        <div id="content">
+            <div id="searchDiv">
+                <form onSubmit={(event) => {handleSubmit(event)}}>
+                    <label>
+                        Please enter a number : 
+                        <input type="text" placeholder="Enter a number" value={input} onChange={(event) => {setInput(event.target.value)}} 
+                        pattern={"[0-9]*"} title="Only numbers can be entered!"></input>
+                        <button type="submit">Submit</button>
+                    </label>
+                </form>
+            </div>
+            {flag?<DisplayComic comicData={comicData} maxNum={maxNum}/>:<Error/>}
+            <sub>Tip: you can enter 0 to get the latest comic</sub>
+        </div>
+    )
+}
+
+//child component that displays the comic
+function DisplayComic(props) {
+    return (
+        <div id="imageDiv">
+            <h3 id="contentHeader">{props.comicData.num}: {props.comicData.title}</h3>
+            <img id="contentImg" src={props.comicData.img} alt={props.comicData.alt}></img>
+            <p>Comic published on: {props.comicData.day}/{props.comicData.month}/{props.comicData.year}</p>
+            <p>The latest comic number is: {props.maxNum}</p>
+        </div>
+    )
+}
+
+//child component that displays an error
+function Error() {
+    return (
+        <div>
+            <h2>Unable to display comic, please try again</h2>
+            <ul>
+                <h4>Possible reasons:</h4>
+                <li>If you entered a number greater than the max number, the comic cannot be fetched as it does not exist yet.</li>
+                <li>The backend server may be offline. Please wait until this is resolved.</li>
+                <li>The XKCD API may be offline. Please wait until this is resolved.</li>
+            </ul>
+        </div>
+    )
 }
 
 export default Main;
