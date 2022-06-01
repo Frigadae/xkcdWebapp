@@ -36,7 +36,7 @@ class Main extends React.Component {
             return;
         }
         
-        if (this.state.searchNum == 0 || this.state.searchNum === null) {
+        if (this.state.searchNum === 0 || this.state.searchNum === null) {
             const jsonString = await getAPI.get(`?url=https://xkcd.com/info.0.json`)
             .then(response => {
                 return response.data;
