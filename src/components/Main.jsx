@@ -38,6 +38,7 @@ function Main() {
 
         getAPI.get(query)
         .then(response => {
+            console.log(response);
             const receivedComicData = JSON.parse(response.data);
             setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
             day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
@@ -57,7 +58,7 @@ function Main() {
                     <label>
                         Please enter a number : 
                         <input type="text" placeholder="Enter a number" value={input} onChange={(event) => {setInput(event.target.value)}} 
-                        pattern={"[0-9]+"} title="Only numbers can be entered!"></input>
+                        pattern={"[0-9]+"} title="Please enter a number!" required></input>
                         <button type="submit">Submit</button>
                     </label>
                 </form>
