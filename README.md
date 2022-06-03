@@ -1,74 +1,44 @@
-# Getting Started with Create React App
+# About this Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Background
+I built this project after attending a Summer Of Tech event which showcases how Vue.js web apps can be used to communicate with APIs via the internet.\
+(Hello Wildeye! Thank you for Javascript and the IoT lecture!)
 
-## About this app
+Before this, I was aware of the existence of React.js but never really understood it or bothered to give it a try.
+I now have a basic understanding of React.js. The Javascript code takes the HTML code and "renders" it onto the browser page.
+This project is not perfect, but it is a good start.
 
-Please read the ``AboutThisProject.md`` for information about this project by the author.
+I had always enjoyed browsing XKCD comics. It's filled with science jokes and presented in a simple visual format.
+Although the XKCD website keeps an archive with the titles displayed. It would be nice to search for a comic instead of browsing the archive.
+While numbers are harder to remember than titles, it does make the searching easier.
 
-## Available Scripts
+## 2021 Update
+When I first built this ReactJs app in 2020. I did not know what exactly the workings of React does, as long as it worked I was happy. 
+This time I understood the inner workings of React far more and proceeded to rewrite my code.\
+Originally the Main component was class-based. While this is perfectly fine. I see the benefits of functional components outweigh class-based components. 
+The biggest appeal is it is simpler to set up and removes the need for a constructor or binding functions (without resorting to arrow functions).
+The rewrite took two days and was completed on 1 June 2021 and deployed to Netlify.
 
-In the project directory, you can run:
+## Website link
+You can access the web application and search up XKCD comics [here](https://xkcdsearchwebapp.netlify.app/).
 
-### `npm start`
+## Project demo
+You can find a demonstration of the webapp in action [here](https://www.youtube.com/watch?v=v_YiEfR_okA).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Backend repo
+The backend service code can be located in this [repo](https://github.com/wang-yi-yao/httpTriggerForXKCDwebapp).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies used
+- Front end is built using Javascript and React.js and hosted on Netlify.
+- Code is maintained using Git on both the Github repository and the local repository.
+- Backend is built using C# and .Net and is hosted on Microsoft Azure's functions service.
 
-### `npm test`
+## Acknowledgements
+I would like to thank William Samaya from dev.to for showing how to overcome the CORS policy problem.
+Without his guide I would not be able to utilise the XKCD API for this project.\
+See: https://dev.to/will_yama/how-to-overcome-cors-errors-2nh9 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+XKCD is by Randall Munroe.\
+Please visit [xkcd.com](https://xkcd.com) to directly access the source materials.\
+The XKCD api can be found [here](https://xkcd.com/json.html)
