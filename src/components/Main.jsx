@@ -38,7 +38,6 @@ function Main() {
 
         getAPI.get(query)
         .then(response => {
-            console.log(response);
             const receivedComicData = JSON.parse(response.data);
             setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
             day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
