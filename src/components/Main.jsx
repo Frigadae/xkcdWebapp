@@ -15,6 +15,7 @@ function Main() {
             setMaxNum(receivedComicData.num);
             setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
             day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
+            setFlag(true);
         })
         .catch(error => {
             console.log(error);
@@ -37,10 +38,10 @@ function Main() {
 
         getAPI.get(query)
         .then(response => {
-            setFlag(true);
             const receivedComicData = JSON.parse(response.data);
             setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
             day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
+            setFlag(true);
         })
         .catch(error => {
             console.log(error);
