@@ -4,7 +4,7 @@ import { getAPI } from "./API";
 function Main() {
     const [comicData, setComicData] = useState({num: 0, title: "", getImg: null, alt: "", day:0, month:0, year:0});
     const [maxNum, setMaxNum] = useState(-1);
-    const [input, setInput] = useState(null);
+    const [input, setInput] = useState("");
     const [flag, setFlag] = useState(true);
 
     //makes a HTTP request when component mounts for the first time
@@ -30,23 +30,26 @@ function Main() {
 
         if (Number.parseInt(input) === 0) {
             query = `?num=0`;
+            setFlag(true);
         } else if (input > 0 && input <= maxNum) {
             query = `?num=${Number.parseInt(input)}`;
+            setFlag(true);
         } else {
             setFlag(false);
         }
 
-        getAPI.get(query)
-        .then(response => {
-            const receivedComicData = JSON.parse(response.data);
-            setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
-            day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
-            setFlag(true);
-        })
-        .catch(error => {
-            console.log(error);
-            setFlag(false);
-        })
+        if (flag) {
+            getAPI.get(query)
+            .then(response => {
+                const receivedComicData = JSON.parse(response.data);
+                setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
+                day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
+            })
+            .catch(error => {
+                console.log(error);
+                setFlag(false);
+            })
+        }
     }
 
     //returns the components
@@ -73,7 +76,7 @@ function DisplayComic(props) {
     return (
         <div id="imageDiv">
             <h3 id="contentHeader">{props.comicData.num}: {props.comicData.title}</h3>
-            <img class="displayComic" src={props.comicData.img} alt={props.comicData.alt}></img>
+            <img id="displayComic" src={props.comicData.img} alt={props.comicData.alt}></img>
             <p>Comic published on: {props.comicData.day}/{props.comicData.month}/{props.comicData.year}</p>
             <p>The latest comic number is: {props.maxNum}</p>
         </div>
