@@ -9,7 +9,7 @@ function Main() {
 
     //makes a HTTP request when component mounts for the first time
     useEffect(() => {
-        getAPI.get(`?url=https://xkcd.com/info.0.json`)
+        getAPI.get(`?num=0`)
         .then(response => {
             const receivedComicData = JSON.parse(response.data);
             setMaxNum(receivedComicData.num);
@@ -18,39 +18,34 @@ function Main() {
         })
         .catch(error => {
             console.log(error);
+            setFlag(false);
         })
     }, []);
 
     //makes a HTTP request when submit button is clicked
     function handleSubmit(event) {
         event.preventDefault();
-        if (input > 0 && input <= maxNum) {
-            getAPI.get(`?url=https://xkcd.com/${input}/info.0.json`)
-            .then(response => {
-                setFlag(true);
-                const receivedComicData = JSON.parse(response.data);
-                setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
-                day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
-            })
-            .catch(error => {
-                console.log(error);
-                setFlag(false);
-            })
-        } else if (Number.parseInt(input) === 0) {
-            getAPI.get(`?url=https://xkcd.com/info.0.json`)
-            .then(response => {
-                setFlag(true);
-                const receivedComicData = JSON.parse(response.data);
-                setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
-                day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
-            })
-            .catch(error => {
-                console.log(error);
-                setFlag(false);
-            })
+        let query = ``;
+
+        if (Number.parseInt(input) === 0) {
+            query = `?num=0`;
+        } else if (input > 0 && input <= maxNum) {
+            query = `?num=${input}`;
         } else {
             setFlag(false);
         }
+
+        getAPI.get(query)
+        .then(response => {
+            setFlag(true);
+            const receivedComicData = JSON.parse(response.data);
+            setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
+            day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
+        })
+        .catch(error => {
+            console.log(error);
+            setFlag(false);
+        })
     }
 
     //returns the components
