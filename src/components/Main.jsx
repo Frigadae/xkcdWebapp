@@ -57,7 +57,7 @@ function Main() {
                     <label>
                         Please enter a number : 
                         <input type="text" placeholder="Enter a number" value={input} onChange={(event) => {setInput(event.target.value)}} 
-                        pattern={"[0-9]*"} title="Only numbers can be entered!"></input>
+                        pattern={"[0-9]+"} title="Only numbers can be entered!"></input>
                         <button type="submit">Submit</button>
                     </label>
                 </form>
