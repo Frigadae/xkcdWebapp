@@ -91,10 +91,11 @@ function Error() {
         <div>
             <h2>Unable to display comic, please try again</h2>
             <ul>
-                <h4>Possible reasons:</h4>
-                <li>If you entered a number greater than the max number, the comic cannot be fetched as it does not exist yet.</li>
-                <li>The backend server may be offline. Please wait until this is resolved.</li>
+                <h4>Possible reasons why this happened:</h4>
+                <li>If you entered a number greater than the max number, the comic does not exist yet.</li>
+                <li>The backend HTTP trigger may be offline. Please wait until this is resolved.</li>
                 <li>The XKCD API may be offline. Please wait until this is resolved.</li>
+                <li>There might be network problems. Check the console for errors.</li>
             </ul>
         </div>
     )
