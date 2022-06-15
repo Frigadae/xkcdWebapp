@@ -26,20 +26,23 @@ function Main() {
     //makes a HTTP request when submit button is clicked
     function handleSubmit(event) {
         event.preventDefault();
-        let query = ``;
 
         if (Number.parseInt(input) === 0) {
-            query = `?num=0`;
+            let query = `?num=0`;
+            fetchData(query);
             setFlag(true);
         } else if (input > 0 && input <= maxNum) {
-            query = `?num=${Number.parseInt(input)}`;
+            let query = `?num=${Number.parseInt(input)}`;
+            fetchData(query);
             setFlag(true);
         } else {
             setFlag(false);
         }
+    }
 
-        if (flag) {
-            getAPI.get(query)
+    //function where the query is made
+    function fetchData(query) {
+        getAPI.get(query)
             .then(response => {
                 const receivedComicData = JSON.parse(response.data);
                 setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
@@ -49,7 +52,6 @@ function Main() {
                 console.log(error);
                 setFlag(false);
             })
-        }
     }
 
     //returns the components
