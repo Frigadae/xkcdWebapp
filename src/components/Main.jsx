@@ -30,28 +30,27 @@ function Main() {
         if (Number.parseInt(input) === 0) {
             let query = `?num=0`;
             fetchData(query);
-            setFlag(true);
         } else if (input > 0 && input <= maxNum) {
             let query = `?num=${Number.parseInt(input)}`;
             fetchData(query);
-            setFlag(true);
         } else {
             setFlag(false);
         }
     }
 
-    //function where the query is made
+    //function where the query is sent and flag is set
     function fetchData(query) {
         getAPI.get(query)
             .then(response => {
                 const receivedComicData = JSON.parse(response.data);
                 setComicData({num: receivedComicData.num, title: receivedComicData.title, img: receivedComicData.img, alt: receivedComicData.alt,
                 day: receivedComicData.day, month: receivedComicData.month, year: receivedComicData.year});
+                setFlag(true);
             })
             .catch(error => {
                 console.log(error);
                 setFlag(false);
-            })
+            });
     }
 
     //returns the components
